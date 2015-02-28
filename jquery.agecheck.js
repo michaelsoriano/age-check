@@ -122,7 +122,7 @@
         }; //end _this
          
         if(sessionStorage.getItem("ageVerified") == "true"){
-//            return false;
+            return false;
         }
         
         _this.buildHtml();  
