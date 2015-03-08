@@ -13,19 +13,118 @@ and open the template in the editor.
         <script src="jquery.agecheck.min.js"></script>
         <script>
             $(document).ready(function(){ 
-                $.ageCheck({
-                    minAge: 15,
-                    redirectTo : 'http://yahoo.com'
-                });             
+                var minAge = $('select').val();
+                $('select').on('change', function(){
+                   minAge = $(this).val(); 
+                });
+                $('button').on('click', function(){
+                    sessionStorage.clear();
+                    $.ageCheck({minAge: minAge});
+                });
+                $.ageCheck({minAge: minAge});        
             });        
         </script>
+        <style>
+            .demo select {
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                padding: 2px;
+            }
+            .demo h3 {
+                font-family:'Bree Serif', arial; 
+                font-weight:bold; 
+                font-size:30px; 
+                text-align:center; 
+                border-bottom:1px dashed #ccc;  
+                padding:0 0 20px 0; 
+                line-height:38px;
+            }
+            .demo p {
+                
+                font-family: georgia, serif; 
+                font-size:18px; 
+                line-height:26px; 
+                text-align:center;
+                margin-bottom:10px;
+                color:#ADADAD;
+            }
+            .demo button {
+                box-sizing: border-box;
+                display: inline-block;
+                margin-bottom: 10px;
+                margin-top:5px;
+                font-weight: bold;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                -ms-touch-action: manipulation;
+                touch-action: manipulation;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                background-image: none;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                padding: 4px 20px 6px 20px;
+                font-size: 24px;
+                line-height: 1.5;
+                background:#8EB908;
+                color:#fff; 
+                text-shadow:1px 1px 0 #84A51D;
+                 font-family: 'Bree Serif', serif; 
+            }
+            .demo button:hover{
+                box-sizing: border-box;
+                background:#82A711;
+            }
+            @media (max-width: 500px) {
+                .demo p {
+                    font-size:12px;
+                    line-height: 17px;
+                }
+                .demo h3 {
+                    font-size:18px;
+                    line-height:22px;
+                }
+                .demo button {
+                    font-size:17px;
+                }
+            }
+        </style>
     </head>
     
     <body>
-        
-        <h3 style="font-family:arial; font-weight:bold; font-size:30px; text-align:center; border-bottom:1px dashed #ccc;  padding:0 0 20px 0; line-height:38px;">
-            <a style="text-decoration:none; color:#666;" href="http://fearlessflyer.com/build-a-simple-responsive-navigation-menu-from-scratch/">AgeCheck.js <span style="color:red;">Demo</span><br>jQuery Plugin for Checking user age</a></h3>
-            <p style="padding:0px 0 10px 0; font-style:italic; font-family:Georgia; font-size:14px; line-height:21px; text-align:center;">Resize the browser to at least 700 pixels. See the problem with the "Non responsive" menu,<br> while the "Yes responsive" menu does okay. 
-Click <strong><a style="color:red" href="http://fearlessflyer.com/build-a-simple-responsive-navigation-menu-from-scratch/">Here</a></strong> to go back to the tutorial</p>
+        <div class="demo">
+        <h3>
+            <a style="text-decoration:none; color:#666;" href="http://fearlessflyer.com/?p=4377">AgeCheck.js <span style="color:red;">Demo</span><br>jQuery Plugin for Checking user age</a></h3>
+            <div style="max-width:500px; padding:0; margin:0 auto;">
+                <p>
+                    AgeCheck.js will automatically prompt to check your age. It will redirect back to this page on success. You can change the minimum age by selecting from the select options, and 
+                    re-trigger by clicking the big button below. 
+                </p>
+                <p>
+                    Oh, the plugin is also responsive - so resize the viewport. Aitte?                 
+                </p>               
+                <p>
+                    Minimum age:
+                    <select name="age">
+                        <option value="21">21</option>
+                        <option value="20">20</option>
+                        <option value="19">19</option>
+                        <option value="18">18</option>
+                    </select>
+                </p>
+                <p>
+                    <button>Check My Age:</button>
+                </p>
+                <p>
+                    Click <strong><a style="color:red" href="https://github.com/fearlessflyer/age-check">Here</a></strong> to go to the GitHub Repo.<br>
+                    Click <strong><a style="color:red" href="http://fearlessflyer.com/?p=4377">Here</a></strong> to go to the Documentation.
+                </p>
+            </div>
+        </div>
     </body>
 </html>
+ 

@@ -47,6 +47,9 @@
     color:#959595;
     line-height: 20px;
 }
+.ac-container p strong {
+    color:#FF1F1F;
+}
 .ac-container select, 
 .ac-container input {
     box-sizing: border-box;
