@@ -6,3 +6,7 @@ A simple plugin that verifies if a user is old enough to enter your site. You ca
 
 Click http://fearlessflyer.com/agecheck-js-plugin-checking-date-of-birth/ for instructions and options
 
+and 
+
+Click http://cdn.rawgit.com/fearlessflyer/age-check/master/index.html for demo
+
