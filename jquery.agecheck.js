@@ -87,6 +87,10 @@
                     _this.reCenter($('.ac-container'));
                     $('.ac-container').css({opacity: 1})
                 });
+                
+                $(".ac-container .day, .ac-container .year").focus(function(){
+                   $(this).removeAttr('placeholder');
+                });
             }, 
             setAge : function(){
                 _this.age = '';                 
