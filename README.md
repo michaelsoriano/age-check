@@ -8,5 +8,5 @@ Click http://fearlessflyer.com/agecheck-js-plugin-checking-date-of-birth/ for in
 
 and 
 
-Click http://cdn.rawgit.com/fearlessflyer/age-check/master/index.html for demo
+Click http://rawgit.com/fearlessflyer/age-check/master/index.html for demo
 
