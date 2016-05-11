@@ -12,7 +12,8 @@
         
         var settings = $.extend({
             minAge : 21,          
-            redirectTo : '', 
+            redirectTo : '',
+            redirectOnFail : '',
             title : 'Age Verification', 
             copy : 'This Website requires you to be [21] years or older to enter. Please enter your Date of Birth in the fields below in order to continue:'
         }, options);
@@ -121,8 +122,16 @@
                          });
                     });
                 },2000);
+            },
+            handleUnderAge : function() {
+                var underAgeMsg = '<h3>Sorry, you are not old enough to view this site...</h3>';
+                $('.ac-container').html(underAgeMsg);
+                if (settings.redirectOnFail != '') {
+                    setTimeout(function(){
+                        window.location.replace(settings.redirectOnFail);
+                    },2000);
+                }
             }
-            
         }; //end _this
          
         if(sessionStorage.getItem("ageVerified") == "true"){
@@ -142,8 +151,7 @@
                     };
                     _this.handleSuccess();
                 }else{
-                    _this.errors.push('You are not old enough');
-                    _this.displayErrors();
+                    _this.handleUnderAge();
                 }
             }
         });
