@@ -25,11 +25,11 @@
             age : '',
             errors : Array(), 
             setValues : function(){
-                var month = $('.month').val();
-                var day = $('.day').val()
+                var month = $('.ac-container .month').val();
+                var day = $('.ac-container .day').val()
                 _this.month = month; 
                 _this.day = day.replace(/^0+/, ''); //remove leading zero
-                _this.year = $('.year').val();
+                _this.year = $('.ac-container .year').val();
             },
             validate : function(){
                 _this.errors = [];
@@ -52,7 +52,7 @@
                     html += '<li><span>x</span>' + _this.errors[i] + '</li>';
                 }
                 html += '</ul>';
-                setTimeout(function(){$('.errors').html(html)},200);
+                setTimeout(function(){$('.ac-container .errors').html(html)},200);
             },
             reCenter : function (b){
                 b.css("top", Math.max(0, (($(window).height() - (b.outerHeight() + 150)) / 2) + 
