@@ -8,5 +8,5 @@ Click http://michaelsoriano.com/jquery-plugin-check-user-age/ for instructions a
 
 and 
 
-Click http://rawgit.com/fearlessflyer/age-check/master/index.html for demo
+Click https://cdn.rawgit.com/michaelsoriano/age-check/master/index.html for demo
 
