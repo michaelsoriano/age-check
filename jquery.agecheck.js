@@ -56,10 +56,8 @@
                 setTimeout(function(){$('.ac-container .errors').html(html)},200);
             },
             reCenter : function (b){
-                b.css("top", Math.max(0, (($(window).height() - (b.outerHeight() + 150)) / 2) + 
-                                            $(window).scrollTop()) + "px");
-                b.css("left", Math.max(0, (($(window).width() - b.outerWidth()) / 2) + 
-                                            $(window).scrollLeft()) + "px");
+                b.css("top", Math.max(0, (($(window).height() - (b.outerHeight() + 150)) / 2)) + "px");
+                b.css("left", Math.max(0, (($(window).width() - b.outerWidth()) / 2)) + "px");
             }, 
             buildHtml : function(){
             
