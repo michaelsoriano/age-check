@@ -1,0 +1,12 @@
+{
+  "name": "age-check",
+  "version": "1.0.0",
+  "description": "jQuery plugin to verify if user is old enough to enter site",
+  "main": "jquery.agecheck.js",
+  "repository": "https://github.com/michaelsoriano/age-check",
+  "author": "Michael Soriano",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
