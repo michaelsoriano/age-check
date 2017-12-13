@@ -16,6 +16,15 @@
       redirectOnFail: '',
       title: 'Age Verification',
       copy: 'This Website requires you to be [21] years or older to enter. Please enter your Date of Birth in the fields below in order to continue:',
+      successMsg: {
+        header: 'Success!',
+        body: 'You are now being redirected back to the application...'
+      },
+      underAgeMsg: 'Sorry, you are not old enough to view this site...',
+      errorMsg: {
+        invalidDay: 'Day is invalid or empty',
+        invalidYear: 'Year is invalid or empty'
+      }
     }, options);
 
 
@@ -35,10 +44,10 @@
       validate() {
         _this.errors = [];
         if (/^([0-9]|[12]\d|3[0-1])$/.test(_this.day) === false) {
-          _this.errors.push('Day is invalid or empty');
+          _this.errors.push(settings.errorMsg.invalidDay);
         }
         if (/^(19|20)\d{2}$/.test(_this.year) === false) {
-          _this.errors.push('Year is invalid or empty');
+          _this.errors.push(settings.errorMsg.invalidYear);
         }
         _this.clearErrors();
         _this.displayErrors();
@@ -110,7 +119,7 @@
         }
       },
       handleSuccess() {
-        const successMsg = '<h3>Success!</h3><p>You are now being redirected back to the application...</p>';
+        const successMsg = `<h3>${settings.successMsg.header}</h3><p>${settings.successMsg.body}</p>`;
         $('.ac-container').html(successMsg);
         setTimeout(() => {
           $('.ac-container').animate({
@@ -129,7 +138,7 @@
         }, 2000);
       },
       handleUnderAge() {
-        const underAgeMsg = '<h3>Sorry, you are not old enough to view this site...</h3>';
+        const underAgeMsg = `<h3>${settings.underAgeMsg}</h3>`;
         $('.ac-container').html(underAgeMsg);
         if (settings.redirectOnFail !== '') {
           setTimeout(() => {
