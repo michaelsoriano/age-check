@@ -9,10 +9,11 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <link href="agecheck.css" rel="stylesheet" />
-        <script src="jquery.agecheck.min.js"></script>
+        <link href="dist/agecheck.min.css" rel="stylesheet" />
+        <script src="dist/jquery.agecheck-min.js"></script>
         <script>
             $(document).ready(function(){ 
+                //THIS CODE IS ONLY NEEDED FOR DEMO:
                 var minAge = $('select').val();
                 $('select').on('change', function(){
                    minAge = $(this).val(); 
@@ -21,6 +22,8 @@ and open the template in the editor.
                     sessionStorage.clear();
                     $.ageCheck({minAge: minAge});
                 });
+                //END DEMO CODE.
+                //THIS IS ALL YOU NEED FOR PLUGIN:
                 $.ageCheck({minAge: minAge});        
             });        
         </script>

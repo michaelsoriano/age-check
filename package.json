@@ -8,5 +8,10 @@
   "license": "GPL-3.0",
   "dependencies": {
     "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "gulp-clean-css": "^3.9.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-rename": "^1.2.2"
   }
 }

@@ -4,7 +4,7 @@
  * Uses sessionStorage API to store if user is verified.
  * Options can be passed for easy customization.
  * Author: Michael Soriano
- * Author's website: http://fearlessflyer.com*
+ * Author's website: http://michaelsoriano.com
  *
  */
 
