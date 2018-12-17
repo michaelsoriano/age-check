@@ -12,6 +12,7 @@ Add inside document ready: $.ageCheck()
 - redirectTo (URL to redirect when successful)
 - title (Title text above the prompt)
 - copy (Paragraph text below the title)
+- success (Callback to be called on successful validation, takes no arguments)
 - successMsg {header (Header on top of success message), body (text for success message)}
 - underAgeMsg (Message when user didn't pass age requirements)
 - errorMsg {invalidDay (message for invalid day entered), invalidYear (message for invalid year entered)}
@@ -28,7 +29,7 @@ Add inside document ready: $.ageCheck()
 
 Click http://michaelsoriano.com/jquery-plugin-check-user-age/ for instructions and options
 
-and 
+and
 
 Click https://cdn.rawgit.com/michaelsoriano/age-check/master/index.html for demo
 
