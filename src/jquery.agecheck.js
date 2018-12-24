@@ -1,7 +1,7 @@
 /*
  * Plugin: ageCheck.js
  * Description: A simple plugin to verify user's age.
- * Uses sessionStorage API to store if user is verified.
+ * Uses sessionStorage/localStorage API to store if user is verified.
  * Options can be passed for easy customization.
  * Author: Michael Soriano
  * Author's website: http://michaelsoriano.com
@@ -25,9 +25,11 @@
       errorMsg: {
         invalidDay: 'Day is invalid or empty',
         invalidYear: 'Year is invalid or empty'
-      }
+      },
+      storage: 'sessionStorage'
     }, options);
 
+    var storage = window[settings.storage];
 
     const _this = {
       month: '',
@@ -111,9 +113,9 @@
         const ageDate = new Date(ageDifMs); // miliseconds from epoch
         _this.age = Math.abs(ageDate.getUTCFullYear() - 1970);
       },
-      setSessionStorage(key, val) {
+      setStorage(key, val) {
         try {
-          sessionStorage.setItem(key, val);
+          storage.setItem(key, val);
           return true;
         } catch (e) {
           return false;
@@ -152,7 +154,7 @@
       },
     }; // end _this
 
-    if (sessionStorage.getItem('ageVerified') === 'true') {
+    if (storage.getItem('ageVerified') === 'true') {
       return false;
     }
 
@@ -164,8 +166,8 @@
         _this.setAge();
 
         if (_this.age >= settings.minAge) {
-          if (!_this.setSessionStorage('ageVerified', 'true')) {
-            console.log('sessionStorage not supported by your browser');
+          if (!_this.setStorage('ageVerified', 'true')) {
+            console.log(settings.storage + ' not supported by your browser');
           }
           _this.handleSuccess();
         } else {

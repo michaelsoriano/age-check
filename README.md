@@ -1,6 +1,11 @@
 # age-check
 
-A simple plugin that verifies if a user is old enough to enter your site. You can easily customize the plugin with options and it uses sessionStorage to keep from popping up again. The modal box is responsive and is uses an external CSS for easy styling.
+A simple plugin that verifies if a user is old enough to enter your site.
+
+You can easily customize the plugin with options and it uses sessionStorage
+(or localStorage) to keep from popping up again.
+
+The modal box is responsive and uses an external CSS for easy styling.
 
 ## Usage
 
@@ -16,6 +21,7 @@ Add inside document ready: $.ageCheck()
 - successMsg {header (Header on top of success message), body (text for success message)}
 - underAgeMsg (Message when user didn't pass age requirements)
 - errorMsg {invalidDay (message for invalid day entered), invalidYear (message for invalid year entered)}
+- storage (sessionStorage or localStorage, sessionStorage is the default)
 
 ## To Minify JS + CSS
 
