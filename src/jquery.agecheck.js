@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 /*
  * Plugin: ageCheck.js
  * Description: A simple plugin to verify user's age.
