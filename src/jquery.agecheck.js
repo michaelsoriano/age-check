@@ -23,6 +23,7 @@
         body: 'You are now being redirected back to the application...'
       },
       underAgeMsg: 'Sorry, you are not old enough to view this site...',
+      underAge: null,
       errorMsg: {
         invalidDay: 'Day is invalid or empty',
         invalidYear: 'Year is invalid or empty'
@@ -151,6 +152,9 @@
           setTimeout(() => {
             window.location.replace(settings.redirectOnFail);
           }, 2000);
+        }
+        if (settings.underAge) {
+          settings.underAge();
         }
       },
     }; // end _this
