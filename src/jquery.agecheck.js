@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /*
  * Plugin: ageCheck.js
  * Description: A simple plugin to verify user's age.
@@ -80,7 +81,7 @@
         html += '<div class="ac-overlay"></div>';
         html += '<div class="ac-container">';
         html += `<h2>${settings.title}</h2>`;
-        html += `<p>${copy.replace('[21]', `<strong>${settings.minAge}</strong>`)}`; +'</p>';
+        html += `<p>${copy.replace('[21]', `<strong>${settings.minAge}</strong>`)}` + '</p>';
         html += '<div class="errors"></div>';
         html += '<div class="fields"><select class="month">';
         for (let i = 0; i < months.length; i++) {
