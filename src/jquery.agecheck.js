@@ -22,6 +22,7 @@
         body: 'You are now being redirected back to the application...'
       },
       underAgeMsg: 'Sorry, you are not old enough to view this site...',
+      underAge: null,
       errorMsg: {
         invalidDay: 'Day is invalid or empty',
         invalidYear: 'Year is invalid or empty'
@@ -80,7 +81,7 @@
         html += '<div class="ac-overlay"></div>';
         html += '<div class="ac-container">';
         html += `<h2>${settings.title}</h2>`;
-        html += `<p>${copy.replace('[21]', `<strong>${settings.minAge}</strong>`)}`; +'</p>';
+        html += `<p>${copy.replace('[21]', `<strong>${settings.minAge}</strong>`)}` + '</p>';
         html += '<div class="errors"></div>';
         html += '<div class="fields"><select class="month">';
         for (let i = 0; i < months.length; i++) {
@@ -150,6 +151,9 @@
           setTimeout(() => {
             window.location.replace(settings.redirectOnFail);
           }, 2000);
+        }
+        if (settings.underAge) {
+          settings.underAge();
         }
       },
     }; // end _this

@@ -20,6 +20,7 @@ Add inside document ready: $.ageCheck()
 - success (Callback to be called on successful validation, takes no arguments)
 - successMsg {header (Header on top of success message), body (text for success message)}
 - underAgeMsg (Message when user didn't pass age requirements)
+- underAge (Callback to be called on failed validation, takes no arguments)
 - errorMsg {invalidDay (message for invalid day entered), invalidYear (message for invalid year entered)}
 - storage (sessionStorage or localStorage, sessionStorage is the default)
 
