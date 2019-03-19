@@ -10,7 +10,7 @@
 
 (function ($) {
   $.ageCheck = function (options) {
-    const settings = $.extend({
+    var settings = $.extend({
       minAge: 21,
       redirectTo: '',
       redirectOnFail: '',
@@ -32,20 +32,20 @@
 
     var storage = window[settings.storage];
 
-    const _this = {
+    var _this = {
       month: '',
       day: '',
       year: '',
       age: '',
       errors: [],
-      setValues() {
-        const month = $('.ac-container .month').val();
-        const day = $('.ac-container .day').val();
+      setValues: function() {
+        var month = $('.ac-container .month').val();
+        var day = $('.ac-container .day').val();
         _this.month = month;
         _this.day = day.replace(/^0+/, ''); // remove leading zero
         _this.year = $('.ac-container .year').val();
       },
-      validate() {
+      validate: function() {
         _this.errors = [];
         if (/^([0-9]|[12]\d|3[0-1])$/.test(_this.day) === false) {
           _this.errors.push(settings.errorMsg.invalidDay);
@@ -57,35 +57,35 @@
         _this.displayErrors();
         return _this.errors.length < 1;
       },
-      clearErrors() {
+      clearErrors: function() {
         $('.errors').html('');
       },
-      displayErrors() {
-        let html = '<ul>';
-        for (let i = 0; i < _this.errors.length; i++) {
-          html += `<li><span>x</span>${_this.errors[i]}</li>`;
+      displayErrors: function() {
+        var html = '<ul>';
+        for (var i = 0; i < _this.errors.length; i++) {
+          html += '<li><span>x</span>' + _this.errors[i] + '</li>';
         }
         html += '</ul>';
-        setTimeout(() => {
+        setTimeout(function() {
           $('.ac-container .errors').html(html);
         }, 200);
       },
-      reCenter(b) {
-        b.css('top', `${Math.max(0, (($(window).height() - (b.outerHeight() + 150)) / 2))}px`);
-        b.css('left', `${Math.max(0, (($(window).width() - b.outerWidth()) / 2))}px`);
+      reCenter: function(b) {
+        b.css('top', Math.max(0, (($(window).height() - (b.outerHeight() + 150)) / 2)) + 'px');
+        b.css('left', Math.max(0, (($(window).width() - b.outerWidth()) / 2)) + 'px');
       },
-      buildHtml() {
-        const copy = settings.copy;
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        let html = '';
+      buildHtml: function() {
+        var copy = settings.copy;
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var html = '';
         html += '<div class="ac-overlay"></div>';
         html += '<div class="ac-container">';
-        html += `<h2>${settings.title}</h2>`;
-        html += `<p>${copy.replace('[21]', `<strong>${settings.minAge}</strong>`)}` + '</p>';
+        html += '<h2>' + settings.title + '</h2>';
+        html += '<p>' + copy.replace('[21]', '<strong>' + settings.minAge + '</strong>') + '</p>';
         html += '<div class="errors"></div>';
         html += '<div class="fields"><select class="month">';
-        for (let i = 0; i < months.length; i++) {
-          html += `<option value="${i}">${months[i]}</option>`;
+        for (var i = 0; i < months.length; i++) {
+          html += '<option value="' + i + '">' + months[i] + '</option>';
         }
         html += '</select>';
         html += '<input class="day" maxlength="2" placeholder="01" />';
@@ -96,7 +96,7 @@
 
         $('.ac-overlay').animate({
           opacity: 0.8,
-        }, 500, () => {
+        }, 500, function() {
           _this.reCenter($('.ac-container'));
           $('.ac-container').css({
             opacity: 1,
@@ -107,14 +107,14 @@
           $(this).removeAttr('placeholder');
         });
       },
-      setAge() {
+      setAge: function() {
         _this.age = '';
-        const birthday = new Date(_this.year, _this.month, _this.day);
-        const ageDifMs = Date.now() - birthday.getTime();
-        const ageDate = new Date(ageDifMs); // miliseconds from epoch
+        var birthday = new Date(_this.year, _this.month, _this.day);
+        var ageDifMs = Date.now() - birthday.getTime();
+        var ageDate = new Date(ageDifMs); // miliseconds from epoch
         _this.age = Math.abs(ageDate.getUTCFullYear() - 1970);
       },
-      setStorage(key, val) {
+      setStorage: function(key, val) {
         try {
           storage.setItem(key, val);
           return true;
@@ -122,16 +122,16 @@
           return false;
         }
       },
-      handleSuccess() {
-        const successMsg = `<h3>${settings.successMsg.header}</h3><p>${settings.successMsg.body}</p>`;
+      handleSuccess: function() {
+        var successMsg = '<h3>' + settings.successMsg.header + '</h3><p>' + settings.successMsg.body + '</p>';
         $('.ac-container').html(successMsg);
-        setTimeout(() => {
+        setTimeout(function() {
           $('.ac-container').animate({
             top: '-350px',
-          }, 200, () => {
+          }, 200, function() {
             $('.ac-overlay').animate({
               opacity: '0',
-            }, 500, () => {
+            }, 500, function() {
               if (settings.redirectTo !== '') {
                 window.location.replace(settings.redirectTo);
               } else {
@@ -144,11 +144,11 @@
           });
         }, 2000);
       },
-      handleUnderAge() {
-        const underAgeMsg = `<h3>${settings.underAgeMsg}</h3>`;
+      handleUnderAge: function() {
+        var underAgeMsg = '<h3>' + settings.underAgeMsg + '</h3>';
         $('.ac-container').html(underAgeMsg);
         if (settings.redirectOnFail !== '') {
-          setTimeout(() => {
+          setTimeout(function() {
             window.location.replace(settings.redirectOnFail);
           }, 2000);
         }
@@ -156,7 +156,7 @@
           settings.underAge();
         }
       },
-    }; // end _this
+    };
 
     if (storage.getItem('ageVerified') === 'true') {
       return false;
@@ -164,7 +164,7 @@
 
     _this.buildHtml();
 
-    $('.ac-container button').on('click', () => {
+    $('.ac-container button').on('click', function() {
       _this.setValues();
       if (_this.validate() === true) {
         _this.setAge();
@@ -180,9 +180,9 @@
       }
     });
 
-    $(window).resize(() => {
+    $(window).resize(function() {
       _this.reCenter($('.ac-container'));
-      setTimeout(() => {
+      setTimeout(function() {
         _this.reCenter($('.ac-container'));
       }, 500);
     });
