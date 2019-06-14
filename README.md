@@ -3,7 +3,7 @@
 A simple plugin that verifies if a user is old enough to enter your site.
 
 You can easily customize the plugin with options and it uses sessionStorage
-(or localStorage) to keep from popping up again.
+(or localStorage or cookies) to keep from popping up again.
 
 The modal box is responsive and uses an external CSS for easy styling.
 
@@ -22,7 +22,8 @@ Add inside document ready: $.ageCheck()
 - underAgeMsg (Message when user didn't pass age requirements)
 - underAge (Callback to be called on failed validation, takes no arguments)
 - errorMsg {invalidDay (message for invalid day entered), invalidYear (message for invalid year entered)}
-- storage (sessionStorage or localStorage, sessionStorage is the default)
+- storage (sessionStorage, localStorage, or cookie -- sessionStorage is the default)
+- storageExpires (number of days to store the cookie, ONLY VALID for cookie storage method)
 
 ## To Minify JS + CSS
 
