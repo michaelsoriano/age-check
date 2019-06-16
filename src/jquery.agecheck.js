@@ -27,7 +27,8 @@
         invalidDay: 'Day is invalid or empty',
         invalidYear: 'Year is invalid or empty'
       },
-      storage: 'sessionStorage'
+      storage: 'sessionStorage',
+      storageExpires: null,
     }, options);
 
     var storage = window[settings.storage];
@@ -114,9 +115,25 @@
         const ageDate = new Date(ageDifMs); // miliseconds from epoch
         _this.age = Math.abs(ageDate.getUTCFullYear() - 1970);
       },
-      setStorage(key, val) {
+      getStorage() {
+        if(settings.storage === 'cookie') {
+          return document.cookie.split(';').filter((item) => item.trim().startsWith('ageVerified=')).length;
+        } else {
+          return storage.getItem('ageVerified') === 'true';
+        }
+      },
+      setStorage(key, val, expires) {
         try {
-          storage.setItem(key, val);
+          if(settings.storage === 'cookie') {
+            if(expires) {
+              let date = new Date();
+              date.setTime(date.getTime() + (expires * 24 * 60 * 60 * 1000));
+              expires = date.toGMTString();
+            }
+            document.cookie = "ageVerified=true; expires=" + expires + ";";
+          } else {
+            storage.setItem(key, val);
+          }
           return true;
         } catch (e) {
           return false;
@@ -158,7 +175,7 @@
       },
     }; // end _this
 
-    if (storage.getItem('ageVerified') === 'true') {
+    if (_this.getStorage()) {
       return false;
     }
 
@@ -170,7 +187,7 @@
         _this.setAge();
 
         if (_this.age >= settings.minAge) {
-          if (!_this.setStorage('ageVerified', 'true')) {
+          if (!_this.setStorage('ageVerified', 'true', settings.storageExpires)) {
             console.log(settings.storage + ' not supported by your browser');
           }
           _this.handleSuccess();
